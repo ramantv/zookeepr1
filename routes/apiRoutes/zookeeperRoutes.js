@@ -8,6 +8,8 @@ const {
 const { zookeepers } = require('../../data/zookeepers');
 
 router.get('/zookeepers', (req, res) => {
+  console.log("\n router GET /zookeepers = ");
+  console.log(req.query);
   let results = zookeepers;
   if (req.query) {
     results = filterByQuery(req.query, results);
@@ -16,6 +18,8 @@ router.get('/zookeepers', (req, res) => {
 });
 
 router.get('/zookeepers/:id', (req, res) => {
+  console.log("\n router GET /zookeepers/:id = ");
+  console.log(req.query);
   const result = findById(req.params.id, zookeepers);
   if (result) {
     res.json(result);
@@ -25,6 +29,8 @@ router.get('/zookeepers/:id', (req, res) => {
 });
 
 router.post('/zookeepers', (req, res) => {
+  console.log("\n router POST /zookeepers = ");
+  console.log(req.query);
   req.body.id = zookeepers.length.toString();
 
   if (!validateZookeeper(req.body)) {
